@@ -2,6 +2,7 @@ import NameField from '../NameField/NameField';
 import EmailField from '../EmailField/EmailField';
 import MessageField from '../MessageField/MessageField';
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
+import './ContactForm.css'
 
 import { useState } from 'react';
 
@@ -26,7 +27,7 @@ const ContactForm = () => {
             body: data,
         }).then(response => {
             if (response.ok) {
-                alert('Form submitted successfully');
+                alert(`Form submitted successfully: ${formData.name} ${formData.email} ${formData.message}`);
                 setFormData({ name: '', email: '', message: '', currencyData: null });
             }
         }).catch(error => {
@@ -36,12 +37,14 @@ const ContactForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <NameField value={formData.name} setFormData={setFormData} />
-            <EmailField value={formData.email} setFormData={setFormData} />
-            <MessageField value={formData.message} setFormData={setFormData} />
+        <form onSubmit={handleSubmit} className='form-container'>
+            <div className='form-container__inputs'>
+                <NameField value={formData.name} setFormData={setFormData} />
+                <EmailField value={formData.email} setFormData={setFormData} />
+                <MessageField value={formData.message} setFormData={setFormData} />
+            </div>
             <CurrencyConverter setFormData={setFormData} />
-            <button type="submit">Submit</button>
+            <button className="submit-button" type="submit">Submit</button>
         </form>
     );
 };

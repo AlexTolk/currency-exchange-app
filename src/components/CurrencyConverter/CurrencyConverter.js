@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './CurrencyConverter.css'
 
 const CurrencyConverter = () => {
     const [baseCurrency, setBaseCurrency] = useState('USD');
@@ -15,25 +16,28 @@ const CurrencyConverter = () => {
     }, [baseCurrency, targetCurrency, amount]);
 
     return (
-        <div>
-            <label>Base Currency:</label>
-            <select value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)}>
+        <div className='converter-container'>
+            <h3>Currencies</h3>
+            <div className='currencies-container'>
+                <label>Base Currency:</label>
+                <select value={baseCurrency} onChange={(e) => setBaseCurrency(e.target.value)}>
+                    <option value="USD">US Dollars</option>
+                    <option value="EUR">Euros</option>
+                    <option value="RUB">Rubles</option>
+                    <option value="CNY">Chinese Yuan</option>
+                    <option value="GBP">British Pounds</option>
+                </select>
+
+                <label>Target Currency:</label>
+                <select value={targetCurrency} onChange={(e) => setTargetCurrency(e.target.value)}>
                 <option value="USD">US Dollars</option>
-                <option value="EUR">Euros</option>
-                <option value="RUB">Rubles</option>
-                <option value="CNY">Chinese Yuan</option>
-                <option value="GBP">British Pounds</option>
-            </select>
+                    <option value="EUR">Euros</option>
+                    <option value="RUB">Rubles</option>
+                    <option value="CNY">Chinese Yuan</option>
+                    <option value="GBP">British Pounds</option>
+                </select>
 
-            <label>Target Currency:</label>
-            <select value={targetCurrency} onChange={(e) => setTargetCurrency(e.target.value)}>
-            <option value="USD">US Dollars</option>
-                <option value="EUR">Euros</option>
-                <option value="RUB">Rubles</option>
-                <option value="CNY">Chinese Yuan</option>
-                <option value="GBP">British Pounds</option>
-            </select>
-
+            </div>
             <label>Amount:</label>
             <input
                 type="number"

@@ -1,0 +1,9 @@
+.message-input {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-around;
+}
+.message-input label {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
